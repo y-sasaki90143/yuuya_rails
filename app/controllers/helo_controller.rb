@@ -1,16 +1,16 @@
 class HeloController < ApplicationController
+    protect_from_forgery
 
     def index
-        if params['msg'] != nil then
-            @titile = params['msg']
+        if request.post? then
+            @title = 'Result'
+            @msg = 'you typed:' + params['input1'] + '.'
+            @vallue = params['input1']
         else
-            @title = 'index'
+            @title = 'Index'
+            @msg ='type text...'
+            @value = ''
         end
-        @msg = 'this is redirect sample...'
-    end
-
-    def other
-            redirect_to action: :index, params: {'msg': 'from other page'}
     end
 
 end
