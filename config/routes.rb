@@ -14,11 +14,15 @@ Rails.application.routes.draw do
     post 'helo', to: 'helo#index'
     post '/helo/index'
 
-
-
+  get 'people/index'
   get 'people/add'
   post 'people/add', to: 'people#create'
-  get 'people/index'
+  
+  get 'people/edit/:id', to: 'people#edit'
+  patch 'people/edit/:id', to: 'people#update'
+  
+  get '/people/delete/:id', to: "people#delete"
+  
   get 'people', to: 'people#index'
   get 'people/:id', to: 'people#show'
   
