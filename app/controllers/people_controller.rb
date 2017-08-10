@@ -45,8 +45,9 @@ class PeopleController < ApplicationController
         @people = Array.new
         if request.post? then
             f = params[:find].split(',')
-		    @people = Person.where('name like ?', 
-			'%' + params[:find] + '%').order 'age desc'
+		    @people = Person.all.limit(f[0]).offset(f[1])
+	    else
+		    @people = Person.all
         end
     end
 
